@@ -92,6 +92,7 @@ function App() {
     }
     setInsertToggle((prev) => !prev);
   };
+
   const onChangeSelectedTodo = (todo) => {
     setSelectedTodo(todo);
   };
@@ -99,14 +100,36 @@ function App() {
   const onUpdate = (id, text) => {
     onInsertToggle();
     
+    console.log(id);
+    console.log(text);
     setTodos(todos.map((todo) => (todo.id === id ? { ...todo, text } : todo)));
   };
+
+  // const [selectedTodo, setSelectedTodo] = useState(null);
+  // const [insertToggle, setInsertToggle] = useState(false);
+
+  // const onInsertToggle = () => {
+  //   if (selectedTodo) {
+  //     setSelectedTodo(null);
+  //   }
+  //   setInsertToggle((prev) => !prev);
+  // };
+  // const onChangeSelectedTodo = (todo) => {
+  //   setSelectedTodo(todo);
+  // };
+
 
   return (
     <div>
       <TodoTemplate>
         <TodoHeader />
-        <TodoList todos={todos} onRemove={onRemove} onCheck={onCheck} onInsertToggle={onInsertToggle} onChangeSelectedTodo={onChangeSelectedTodo} />
+        <TodoList 
+            todos={todos} 
+            onRemove={onRemove} 
+            onCheck={onCheck}
+            onInsertToggle={onInsertToggle} 
+            onChangeSelectedTodo={onChangeSelectedTodo}
+        /> 
         <TodoCreate onSubmit={onSubmit} />
 
         {insertToggle && (
@@ -118,3 +141,32 @@ function App() {
 }
 
 export default App;
+
+/* 
+
+  const [selectedTodo, setSelectedTodo] = useState(null);
+  const [insertToggle, setInsertToggle] = useState(false);
+
+  const onInsertToggle = () => {
+    if (selectedTodo) {
+      setSelectedTodo(null);
+    }
+    setInsertToggle((prev) => !prev);
+  };
+  const onChangeSelectedTodo = (todo) => {
+    setSelectedTodo(todo);
+  };
+  
+  const onUpdate = (id, text) => {
+    onInsertToggle();
+    
+    setTodos(todos.map((todo) => (todo.id === id ? { ...todo, text } : todo)));
+  };
+
+todoList 에  onInsertToggle={onInsertToggle} onChangeSelectedTodo={onChangeSelectedTodo} 
+
+
+        {insertToggle && (
+          <TodoEdit onUpdate={onUpdate} />
+        )}
+*/

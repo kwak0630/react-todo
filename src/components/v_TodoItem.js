@@ -104,13 +104,9 @@ function TodoItem({todo, onCheck, onRemove, onChangeSelectedTodo, onInsertToggle
             {/* <div className="check" done={done}>
                 {done ? '✅' : '🟩'}
             </div> */}
-
-
-                
             <Text done={done}>
                 {text}
             </Text>
-            
             {/* <LineWrap done={done}>{done && <Line />}</LineWrap> */}
             {/* <Check done={done}></Check>
             <Text done={done}>
@@ -119,7 +115,6 @@ function TodoItem({todo, onCheck, onRemove, onChangeSelectedTodo, onInsertToggle
             </Text> */}
             {/* {text} */}
             <BtnBox>
-            
             <Edit onClick={() =>
                 {onChangeSelectedTodo(todo)
                 onInsertToggle();
@@ -127,7 +122,6 @@ function TodoItem({todo, onCheck, onRemove, onChangeSelectedTodo, onInsertToggle
                 }>
                     수정
             </Edit>
-            
             <Remove onClick={() => onRemove(id)}>
                 삭제
             </Remove>

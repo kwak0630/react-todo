@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 const TodoEditBlock = styled.div`
-    position: fixed;
+    position: absolute;
     top: 0%;
     left: 0%;
     width: 100%;
@@ -17,14 +17,15 @@ const TodoEditBlock = styled.div`
         width: 100%;
         height: 100%;
         background:rgba(0,0,0,0.5);
+        border-radius: 20px;
     }
     .edit-wrap{
-        position: fixed;
+        position: absolute;
         top: 50%;
         left: 50%;
         display: flex;
         flex-direction: column;
-        width: 60%;
+        width: 80%;
         padding:40px 20px 60px;
         background: #fff;
         border-radius: 12px;
@@ -65,6 +66,7 @@ const TodoEditBlock = styled.div`
 function TodoEdit ({selectedTodo, onUpdate}){
 
     const [value, setValue] = useState('');
+    const ref = useRef();
 
     // 이벤트가 발생할 때마다(글자가 하나씩 입력될 때 마다) 변화를 감지
     const onChange = (e) =>{
@@ -77,9 +79,10 @@ function TodoEdit ({selectedTodo, onUpdate}){
         }
     };
     const onSubmit = (e) => {
+        onUpdate(selectedTodo.id, value);
+        setValue("");// submit을 한 후에는 input 창을 비우기
+
         e.preventDefault(); // onSubmit 이벤트는 브라우저를 새로고치기 때문에 막아주기
-        setValue("");
-        // submit을 한 후에는 input 창을 비우기
     };
 
     useEffect(() => {
@@ -99,6 +102,7 @@ function TodoEdit ({selectedTodo, onUpdate}){
                         placeholder='할 일을 입력하세요.'
                         value={value}
                         onChange={onChange}
+                        ref={ref}
                     />
                     <button 
                         type="submit" 
