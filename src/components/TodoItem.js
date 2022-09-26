@@ -121,8 +121,9 @@ function TodoItem({todo, onCheck, onRemove, onChangeSelectedTodo, onInsertToggle
             <BtnBox>
             
             <Edit onClick={() =>
-                {onChangeSelectedTodo(todo)
-                onInsertToggle();
+                {
+                    onChangeSelectedTodo(todo)
+                    onInsertToggle();
                 }
                 }>
                     수정

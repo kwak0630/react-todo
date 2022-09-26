@@ -35,7 +35,7 @@ function App() {
     {
       id: 5,
       text: '할일 수정 작업',
-      done: false
+      done: true
     },
     {
       id: 6,
@@ -100,24 +100,10 @@ function App() {
   const onUpdate = (id, text) => {
     onInsertToggle();
     
-    console.log(id);
-    console.log(text);
+    // console.log(id);
+    // console.log(text);
     setTodos(todos.map((todo) => (todo.id === id ? { ...todo, text } : todo)));
   };
-
-  // const [selectedTodo, setSelectedTodo] = useState(null);
-  // const [insertToggle, setInsertToggle] = useState(false);
-
-  // const onInsertToggle = () => {
-  //   if (selectedTodo) {
-  //     setSelectedTodo(null);
-  //   }
-  //   setInsertToggle((prev) => !prev);
-  // };
-  // const onChangeSelectedTodo = (todo) => {
-  //   setSelectedTodo(todo);
-  // };
-
 
   return (
     <div>
@@ -133,7 +119,7 @@ function App() {
         <TodoCreate onSubmit={onSubmit} />
 
         {insertToggle && (
-          <TodoEdit onUpdate={onUpdate} />
+          <TodoEdit onUpdate={onUpdate} selectedTodo={selectedTodo} />
         )}
       </TodoTemplate>
     </div>

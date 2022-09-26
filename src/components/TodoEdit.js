@@ -86,6 +86,7 @@ function TodoEdit ({selectedTodo, onUpdate}){
     };
 
     useEffect(() => {
+        ref.current.focus();
         if (selectedTodo) {
             setValue(selectedTodo.text);
         }
@@ -95,7 +96,7 @@ function TodoEdit ({selectedTodo, onUpdate}){
         <TodoEditBlock>
             <div className="edit-wrap">
             <h2>수정하기</h2>
-            <form onClick={onSubmit}>
+            <form>
                     <input
                         type="text"
                         className="input-text" 
