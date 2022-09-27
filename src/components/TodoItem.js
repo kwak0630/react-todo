@@ -8,7 +8,12 @@ const Check = styled.div`
     border: 1px solid #ddd;
     border-radius: 5px;
     // box-shadow: 1px 0 8px 2px rgba(0,0,0,0.05);
+    font-size: 16px;
+    text-align: center;
+    line-height: 23px;
+    color: #000;
     transition: 0.125s all ease-in;
+    cursor: pointer;
     ${props =>
     props.done &&
     css`
@@ -20,6 +25,7 @@ const Check = styled.div`
 
 const Text = styled.div`
     position: relative;
+    padding: 0 3px;
     font-size: 17px; 
     // font-family: 'NanumSquareRound';
     transition: 0.125s all ease-in;
@@ -27,6 +33,17 @@ const Text = styled.div`
     props.done &&
     css`
       color: #929292;
+      &:before{
+        //content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #ffe281;
+        transform: translate(0, -50%);
+      }
     `}
     
 `;
@@ -43,6 +60,7 @@ const Edit = styled.div`
     color: #999;
     margin-right: 15px;
     opacity: 0;
+    transition: 0.125s all ease-in;
 `;
 const Remove = styled.div`
     width: 40px;
@@ -97,11 +115,12 @@ const TodoItemBlock = styled.div`
 `;
 
 function TodoItem({todo, onCheck, onRemove, onChangeSelectedTodo, onInsertToggle}){
-    const {id, text, done } = todo;
+    const {id, text, done} = todo;
+    
     return (
         <TodoItemBlock>
             {/* 체크박스 (s) */}
-            <Check done={done} onClick={() => onCheck(id)}></Check>
+            <Check done={done} onClick={() => onCheck(id)}>{done ? '✓' : ''}</Check>
             {/* //체크박스 (e) */}
 
             {/* 할 일 내용 (s) */}

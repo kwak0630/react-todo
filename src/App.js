@@ -2,6 +2,7 @@
 import React, { useState, useRef } from 'react'
 import TodoTemplate from './components/TodoTemplate';
 import TodoHeader from './components/TodoHeader';
+import TodoTab from './components/TodoTab';
 import TodoList from './components/TodoList';
 import TodoCreate from './components/TodoCreate';
 import TodoEdit from './components/TodoEdit';
@@ -10,8 +11,23 @@ import "./assets/css/style.scss"
 
 function App() {
 
+  // 카테고리
+  const [categories, setCategories] = useState([
+    { 
+      id: 'all', 
+      active: true 
+    },
+    { 
+      id: 'complete', 
+      active: false 
+    },
+    { 
+      id: 'incomplete', 
+      active: false 
+    },
+  ]);
   // 할 일
-  const  [todos, setTodos] = useState([
+  const [todos, setTodos] = useState([
     {
       id: 1,
       text: '리액트 공부',
@@ -110,11 +126,27 @@ function App() {
     setTodos(todos.map((todo) => (todo.id === id ? { ...todo, text } : todo)));
   };
 
+  const onChangeCategory = (id) => {
+    
+    setCategories(
+      categories.map((category) => {
+        return category.id === id ? { ...category, active: true } : { ...category, active: false}
+      })
+    );
+    console.log(id)
+
+  }
+
   return (
     <div>
       <TodoTemplate>
         <TodoHeader todos={todos} />
+        <TodoTab 
+            categories={categories} 
+            onChangeCategory={onChangeCategory}
+        />
         <TodoList 
+            categories={categories} 
             todos={todos} 
             onRemove={onRemove} 
             onCheck={onCheck}

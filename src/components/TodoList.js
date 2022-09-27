@@ -4,13 +4,26 @@ import TodoItem from './TodoItem';
 
 const TodoListBlock = styled.div`
     padding:40px 20px 0;
-    
 `;
 
-function TodoList({todos, onCheck, onRemove, onChangeSelectedTodo, onInsertToggle}){
+function TodoList({todos, onCheck, onRemove, onChangeSelectedTodo, onInsertToggle, categories}){
+
+    const currentCategory = categories.filter(category => category.active === true);
+
+    let _todos = todos;
+
+    if (currentCategory === 'incomplete') {
+        _todos = todos.filter(todo => todo.done === false);
+    } else if (currentCategory === 'complete') {
+        _todos = todos.filter(todo => todo.done === true);
+    }
+    
+
+    console.log(currentCategory)
+    
     return (
         <TodoListBlock>
-            {todos.map((todo) =>
+            {_todos.map((todo) =>
                 <TodoItem 
                     todo={todo}
                     key={todo.id}

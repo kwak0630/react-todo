@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TodoHeaderBlock = styled.div`
-    padding:40px 0 20px;
-    border-bottom: 1px solid #ddd;
+    padding:40px 0 0;
     text-align: center;
     h1{
         font-size: 25px;
