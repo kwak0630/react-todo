@@ -21,32 +21,76 @@ const TodoHeaderBlock = styled.div`
             justify-content: space-between;
             align-items: center;
             em{
-                padding-right: 5px;
+                padding: 0 5px;
                 font-size: 18px;
                 font-weight: 700;
                 color: #ff9800;
             }
         }
     }
+    .tab-wrap{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 30px 30px 0;
+        li{
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            button{
+                em{
+                    font-weight: 700;
+                    color: #ff9800;
+                }
+            }
+        }
+    }
 `;
 
-function TodoHeader(){
+function TodoHeader({todos}){
+    
     // 날짜
     const today = new Date();
-    const dateString = today.toLocaleDateString('ko-KR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
+    const year = today.getFullYear();
+    const month = String(Number(today.getMonth()) + 1);
+    const date = today.getDate();
+
+    // const dateString = today.toLocaleDateString('ko-KR', {
+    //   year: 'numeric',
+    //   month: 'long',
+    //   day: 'numeric'
+    // });
+    const dateString = year +'.' + month + "." + date + " ";
     const dayName = today.toLocaleDateString('ko-KR', { weekday: 'short' }); // long or short (금요일 or 금)
 
+
+    // const completeItem = todos.filter(todo => todo.done);
+    const incompleteItem = todos.filter(todo => !todo.done);
+    
     return (
         <TodoHeaderBlock>
             <img className="sally" src={require('../assets/images/ico_sally.png')} alt="sally icon" />
             <div className="header-box">
                 <span className='day'>{dateString}({dayName})</span>
-                <span className='task'><em>2</em>남음</span>
+                <span className='task'><em>{incompleteItem.length}</em>개 남음</span>
             </div>
+            {/* <ul className="tab-wrap">
+                <li>
+                    <button>
+                        all <em>({todos.length})</em>
+                    </button>
+                </li>
+                <li>
+                    <button>
+                        complete <em>({completeItem.length})</em>
+                    </button>
+                </li>
+                <li>
+                    <button>
+                        incomplete <em>({incompleteItem.length})</em>
+                    </button>
+                </li>
+            </ul> */}
         </TodoHeaderBlock>
     )
 }

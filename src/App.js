@@ -108,7 +108,7 @@ function App() {
   return (
     <div>
       <TodoTemplate>
-        <TodoHeader />
+        <TodoHeader todos={todos} />
         <TodoList 
             todos={todos} 
             onRemove={onRemove} 
