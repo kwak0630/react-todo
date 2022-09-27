@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TodoHeaderBlock = styled.div`
-    padding:40px 0 0;
+    padding:40px 0 20px;
+    border-bottom: 1px solid #ddd;
     text-align: center;
     h1{
         font-size: 25px;
@@ -14,8 +15,7 @@ const TodoHeaderBlock = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 20px;
-        border-bottom: 1px solid #ddd;
+        padding: 20px 20px 0;
         .task{
             display: flex;
             justify-content: space-between;
@@ -32,16 +32,17 @@ const TodoHeaderBlock = styled.div`
         display: flex;
         justify-content: space-around;
         align-items: center;
-        padding: 30px 30px 0;
+        padding: 20px 30px 0;
         li{
-            padding: 5px 10px;
+            padding: 5px 15px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 15px;
             button{
-                em{
-                    font-weight: 700;
-                    color: #ff9800;
-                }
+            }
+            &.active{
+                background: #ffe281;
+                border-color: #ffe281;
+                font-weight: 700;
             }
         }
     }
@@ -74,23 +75,6 @@ function TodoHeader({todos}){
                 <span className='day'>{dateString}({dayName})</span>
                 <span className='task'><em>{incompleteItem.length}</em>개 남음</span>
             </div>
-            {/* <ul className="tab-wrap">
-                <li>
-                    <button>
-                        all <em>({todos.length})</em>
-                    </button>
-                </li>
-                <li>
-                    <button>
-                        complete <em>({completeItem.length})</em>
-                    </button>
-                </li>
-                <li>
-                    <button>
-                        incomplete <em>({incompleteItem.length})</em>
-                    </button>
-                </li>
-            </ul> */}
         </TodoHeaderBlock>
     )
 }

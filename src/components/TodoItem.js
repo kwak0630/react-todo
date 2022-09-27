@@ -100,41 +100,44 @@ function TodoItem({todo, onCheck, onRemove, onChangeSelectedTodo, onInsertToggle
     const {id, text, done } = todo;
     return (
         <TodoItemBlock>
+            {/* 체크박스 (s) */}
             <Check done={done} onClick={() => onCheck(id)}></Check>
-            {/* <div className="check" done={done}>
-                {done ? '✅' : '🟩'}
-            </div> */}
+            {/* //체크박스 (e) */}
 
-
-                
+            {/* 할 일 내용 (s) */}
             <Text done={done}>
                 {text}
             </Text>
-            
-            {/* <LineWrap done={done}>{done && <Line />}</LineWrap> */}
-            {/* <Check done={done}></Check>
-            <Text done={done}>
-                {text}
-                {done && <Line done={done}/>}
-            </Text> */}
-            {/* {text} */}
+            {/* //할 일 내용 (e) */}
+
+            {/* 수정, 삭제 (s) */}
             <BtnBox>
-            
-            <Edit onClick={() =>
-                {
-                    onChangeSelectedTodo(todo)
-                    onInsertToggle();
-                }
+                <Edit onClick={() =>
+                    {
+                        onChangeSelectedTodo(todo)
+                        onInsertToggle();
+                    }
                 }>
-                    수정
-            </Edit>
-            
-            <Remove onClick={() => onRemove(id)}>
-                삭제
-            </Remove>
+                        수정
+                </Edit>
+                <Remove onClick={() => onRemove(id)}>
+                    삭제
+                </Remove>
             </BtnBox>
+            {/* //수정, 삭제 (e) */}
         </TodoItemBlock>
     )
 }
 
 export default TodoItem;
+
+            
+/* <div className="check" done={done}>
+{done ? '✅' : '🟩'}
+</div>
+<LineWrap done={done}>{done && <Line />}</LineWrap>
+<Check done={done}></Check>
+<Text done={done}>
+{text}
+{done && <Line done={done}/>}
+</Text> */

@@ -10,7 +10,7 @@ import "./assets/css/style.scss"
 
 function App() {
 
-  // const todos = [
+  // 할 일
   const  [todos, setTodos] = useState([
     {
       id: 1,
@@ -49,18 +49,23 @@ function App() {
     },
     {
       id: 8,
-      text: '완료 체크 카운트 작업',
-      done: false
+      text: '미 완료 카운트 작업',
+      done: true
     },
     {
       id: 9,
       text: '오늘 날짜 작업',
       done: true
+    },
+    {
+      id: 10,
+      text: '카테고리 탭 나누기',
+      done: false
     }
   ]);
 
+  // 할 일 추가
   const nextId = useRef(0);
-
   const onSubmit = (text) => {
     const todo = {
       id: nextId.current,
@@ -71,10 +76,12 @@ function App() {
     nextId.current ++; // 1씩 더하기 ?????? 근데 왜 오류 나지?????
   };
 
+  // 할 일 삭제
   const onRemove = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  // 할 일 체크
   const onCheck = (id) => {
     setTodos(
       todos.map((todo) => {
@@ -83,20 +90,18 @@ function App() {
     );
   };
 
+  // 할 일 수정
   const [selectedTodo, setSelectedTodo] = useState(null);
   const [insertToggle, setInsertToggle] = useState(false);
-
   const onInsertToggle = () => {
     if (selectedTodo) {
       setSelectedTodo(null);
     }
     setInsertToggle((prev) => !prev);
   };
-
   const onChangeSelectedTodo = (todo) => {
     setSelectedTodo(todo);
   };
-  
   const onUpdate = (id, text) => {
     onInsertToggle();
     
@@ -127,32 +132,3 @@ function App() {
 }
 
 export default App;
-
-/* 
-
-  const [selectedTodo, setSelectedTodo] = useState(null);
-  const [insertToggle, setInsertToggle] = useState(false);
-
-  const onInsertToggle = () => {
-    if (selectedTodo) {
-      setSelectedTodo(null);
-    }
-    setInsertToggle((prev) => !prev);
-  };
-  const onChangeSelectedTodo = (todo) => {
-    setSelectedTodo(todo);
-  };
-  
-  const onUpdate = (id, text) => {
-    onInsertToggle();
-    
-    setTodos(todos.map((todo) => (todo.id === id ? { ...todo, text } : todo)));
-  };
-
-todoList 에  onInsertToggle={onInsertToggle} onChangeSelectedTodo={onChangeSelectedTodo} 
-
-
-        {insertToggle && (
-          <TodoEdit onUpdate={onUpdate} />
-        )}
-*/
