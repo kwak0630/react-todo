@@ -13,8 +13,8 @@ const TodoTabBlock = styled.div`
             padding: 5px 15px;
             border: 1px solid #ddd;
             border-radius: 15px;
-            button{
-            }
+            cursor: pointer;
+            transition: 0.125s all ease-in;
             &.active{
                 background: #ffe281;
                 border-color: #ffe281;

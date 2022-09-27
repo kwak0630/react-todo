@@ -133,6 +133,7 @@ function App() {
         return category.id === id ? { ...category, active: true } : { ...category, active: false}
       })
     );
+    
     console.log(id)
 
   }

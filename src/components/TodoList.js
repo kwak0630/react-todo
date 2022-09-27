@@ -6,20 +6,26 @@ const TodoListBlock = styled.div`
     padding:40px 20px 0;
 `;
 
-function TodoList({todos, onCheck, onRemove, onChangeSelectedTodo, onInsertToggle, categories}){
+function TodoList({todos, onCheck, onRemove, onChangeSelectedTodo, onInsertToggle, categories, navState}){
 
     const currentCategory = categories.filter(category => category.active === true);
 
-    let _todos = todos;
+    let _todos = todos.filter(todo => !todo.done);
+    // const todoIncomplete  = _todos.filter(todo => todo.done === false);
+    // const todoComplete = _todos = todos.filter(todo => todo.done === true);
+
+
+    // let _todos = todos;
 
     if (currentCategory === 'incomplete') {
-        _todos = todos.filter(todo => todo.done === false);
+        // _todos = todos.filter(todo => todo.done === false);
     } else if (currentCategory === 'complete') {
-        _todos = todos.filter(todo => todo.done === true);
+        // _todos = todos.filter(todo => todo.done === true);
     }
     
-
-    console.log(currentCategory)
+    // console.log(currentCategory)
+    // console.log(todoIncomplete)
+    // console.log(todoComplete)
     
     return (
         <TodoListBlock>
