@@ -76,7 +76,7 @@ function App() {
     {
       id: 10,
       text: '카테고리 탭 나누기',
-      done: false
+      done: true
     }
   ]);
 
@@ -126,16 +126,14 @@ function App() {
     setTodos(todos.map((todo) => (todo.id === id ? { ...todo, text } : todo)));
   };
 
+  // 탭 클릭 (카테고리 변경)
   const onChangeCategory = (id) => {
-    
     setCategories(
       categories.map((category) => {
         return category.id === id ? { ...category, active: true } : { ...category, active: false}
       })
     );
-    
-    console.log(id)
-
+    // console.log(id)
   }
 
   return (

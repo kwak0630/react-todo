@@ -118,7 +118,7 @@ function TodoItem({todo, onCheck, onRemove, onChangeSelectedTodo, onInsertToggle
     const {id, text, done} = todo;
     
     return (
-        <TodoItemBlock>
+        <TodoItemBlock id={id}>
             {/* 체크박스 (s) */}
             <Check done={done} onClick={() => onCheck(id)}>{done ? '✓' : ''}</Check>
             {/* //체크박스 (e) */}
