@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const TodoTemplateBlock = styled.div`
     position: relative;
 
+    overflow: hidden;
     display: flex;
     flex-direction: column;
 

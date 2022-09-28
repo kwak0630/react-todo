@@ -1,6 +1,7 @@
 
 import React, { useState, useRef } from 'react'
 import TodoTemplate from './components/TodoTemplate';
+import TodoNotice from './components/TodoNotice';
 import TodoHeader from './components/TodoHeader';
 import TodoTab from './components/TodoTab';
 import TodoList from './components/TodoList';
@@ -77,7 +78,22 @@ function App() {
       id: 10,
       text: '카테고리 탭 나누기',
       done: true
-    }
+    },
+    {
+      id: 11,
+      text: 'swiper 연습',
+      done: true
+    },
+    // {
+    //   id: 12,
+    //   text: 'swiper 연습',
+    //   done: true
+    // },
+    // {
+    //   id: 13,
+    //   text: 'swiper 연습',
+    //   done: true
+    // }
   ]);
 
   // 할 일 추가
@@ -139,6 +155,7 @@ function App() {
   return (
     <div>
       <TodoTemplate>
+        <TodoNotice />
         <TodoHeader todos={todos} />
         <TodoTab 
             categories={categories} 

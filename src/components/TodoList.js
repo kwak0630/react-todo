@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import TodoItem from './TodoItem';
 
 const TodoListBlock = styled.div`
-    padding:40px 20px 0;
+    padding:40px 20px 80px;
+    overflow-x:hidden;
+    overflow-y:scroll;
 `;
 
 function TodoList({todos, onCheck, onRemove, onChangeSelectedTodo, onInsertToggle, categories}){
