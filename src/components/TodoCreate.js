@@ -100,6 +100,7 @@ function TodoCreate(props){
         // 만약 input 창이 빈채로 submit을 하려고 할 땐 return시키기
         props.onSubmit(value);
         setValue("");
+        setOpen(!open);
         // submit을 한 후에는 input 창을 비우기
     };
 
