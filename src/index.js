@@ -2,12 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import BoardList from './components/BoardList';
+import BoardDetail from './components/BoardDetail';
 import reportWebVitals from './reportWebVitals';
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="components/BoardList" element={<BoardList />} />
+        <Route path="components/BoardDetail/:id" element={<BoardDetail />} />
+      </Routes>
+    </BrowserRouter>
+    {/* <App /> */}
   </React.StrictMode>
 );
 

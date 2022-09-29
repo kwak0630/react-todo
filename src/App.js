@@ -1,5 +1,6 @@
 
 import React, { useState, useRef } from 'react'
+
 import TodoTemplate from './components/TodoTemplate';
 import TodoNotice from './components/TodoNotice';
 import TodoHeader from './components/TodoHeader';
@@ -84,16 +85,31 @@ function App() {
       text: 'swiper 연습',
       done: true
     },
-    // {
-    //   id: 12,
-    //   text: 'swiper 연습',
-    //   done: true
-    // },
-    // {
-    //   id: 13,
-    //   text: 'swiper 연습',
-    //   done: true
-    // }
+    {
+      id: 12,
+      text: 'router로 링크 이동, 페이지 id 값',
+      done: true
+    },
+    {
+      id: 13,
+      text: '게시판 목록, 상세페이지 작업',
+      done: true
+    },
+    {
+      id: 14,
+      text: '게시판 목록(탭), 작성, 수정, 삭제 작업',
+      done: false
+    },
+    {
+      id: 15,
+      text: '더보기 목록',
+      done: false
+    },
+    {
+      id: 16,
+      text: '뒤로가기 버튼 작업',
+      done: true
+    }
   ]);
 
   // 할 일 추가
@@ -174,6 +190,7 @@ function App() {
         {insertToggle && (
           <TodoEdit onUpdate={onUpdate} selectedTodo={selectedTodo} />
         )}
+
       </TodoTemplate>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
 const TodoHeaderBlock = styled.div`
@@ -70,6 +71,10 @@ function TodoHeader({todos}){
     return (
         <TodoHeaderBlock>
             <img className="sally" src={require('../assets/images/ico_sally.png')} alt="sally icon" />
+
+            <nav className="nav-box">
+            <Link to="../components/BoardList">📔</Link>
+            </nav>
             <div className="header-box">
                 <span className='day'>{dateString}({dayName})</span>
                 <span className='task'><em>{incompleteItem.length}</em>개 남음</span>
