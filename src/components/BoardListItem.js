@@ -20,7 +20,7 @@ const BoardListItemBlock = styled.div`
         width: calc(100% - 45px);
         padding: 0 10px 0 0;
         strong{
-            display: block;
+            display:block;
             margin-bottom: 3px;
             font-size: 16px;
         }

@@ -22,10 +22,12 @@ const CreateBox = styled.div`
         width: 60px;
         height: 45px;
         margin-left: 10px;
+        padding:0;
         border: none;
         border-radius: 5px;
         background: #ffe281;
         font-weight: 700;
+        font-size: 15px;
     }
     ${props =>
         props.open &&
@@ -83,7 +85,11 @@ function TodoCreate(props){
     const ref = useRef();
 
     // 클릭시 오픈/닫기
-    const onToggle = () => setOpen(!open);
+    const onToggle = () => {
+        setOpen(!open);
+
+        ref.current.focus();
+    }
     // 이벤트가 발생할 때마다(글자가 하나씩 입력될 때 마다) 변화를 감지
     const onChange = (e) =>{
         setValue(e.target.value);

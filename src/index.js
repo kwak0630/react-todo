@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import BoardList from './components/BoardList';
 import BoardDetail from './components/BoardDetail';
+// import BoardEdit from './components/BoardEdit';
+import BoardCreate from './components/BoardCreate';
 import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -16,6 +18,8 @@ root.render(
         <Route path="/" element={<App />} />
         <Route path="components/BoardList" element={<BoardList />} />
         <Route path="components/BoardDetail/:id" element={<BoardDetail />} />
+        {/* <Route path="components/BoardEdit/:id" element={<BoardEdit />} /> */}
+        <Route path="components/BoardCreate" element={<BoardCreate />} />
       </Routes>
     </BrowserRouter>
     {/* <App /> */}

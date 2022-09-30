@@ -45,7 +45,6 @@ const Text = styled.div`
         transform: translate(0, -50%);
       }
     `}
-    
 `;
 
 const BtnBox = styled.div`
