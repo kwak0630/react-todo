@@ -86,7 +86,7 @@ function Board(){
     {
       id: 3,
       title: '시간이 안 가는 이번 주',
-      content: '왜 아직도 목요일 왜 아직도 목요일 왜 아직도 목요일 왜 아직도 목요일 왜 아직도 목요일 왜 아직도 목요일 왜 아직도 목요일 왜 아직도 목요일'
+      content: '왜 아직도 목요일 왜 아직도 목요일 왜 아직도 목요일 왜 아직도 목요일'
     },
     {
       id: 4,
@@ -139,7 +139,7 @@ function Board(){
   const navigate = useNavigate();
 
   // 페이징
-  const [limit] = useState(6);
+  const [limit] = useState(5);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
 

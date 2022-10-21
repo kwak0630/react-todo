@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
 const BoardListItemBlock = styled.div`
+    position: relative;
     a{
         display: flex;
         margin-bottom: 18px;
@@ -29,6 +30,13 @@ const BoardListItemBlock = styled.div`
             color: #444;
         }
     }
+    .btn-delete{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 20px;
+        opacity: 0.2;
+    }
 `;
 
 function BoardList({boardItem, onDelete}){
@@ -52,16 +60,16 @@ function BoardList({boardItem, onDelete}){
                     })}
                 </div>
             </Link>
-                        <button 
-                            onClick={() => {
-                                //console.log(id)
-                                if (window.confirm(`삭제하시겠습니까?`)) {
-                                    onDelete(id);
-                                }
-                              }}
-                        >
-                            <img className="btn-delete" src={require('../assets/images/ico_delete.png')} alt="delete icon" />
-                        </button>
+            <button 
+                onClick={() => {
+                    //console.log(id)
+                    if (window.confirm(`삭제하시겠습니까?`)) {
+                        onDelete(id);
+                    }
+                    }}
+            >
+                <img className="btn-delete" src={require('../assets/images/ico_delete.png')} alt="delete icon" />
+            </button>
         </BoardListItemBlock>
     )
 }
