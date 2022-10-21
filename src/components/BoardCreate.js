@@ -40,7 +40,7 @@ const BoardCreateBlock = styled.div`
 
 `;
 
-function BoardCreate (){
+function BoardCreate (props){
     const navigate = useNavigate();
 
     const [createTitle, setCreateTitle] = useState ();
@@ -64,12 +64,35 @@ function BoardCreate (){
         // console.log(createContent)
     }
 
+    // const onSave = (e) => {
+    //     // const boardTitle = {name: createTitle};
+    //     // const boardContent = {name: createContent};
+    //     // window.localStorage.setItem("board title", JSON.stringify(boardTitle))
+    //     // window.localStorage.setItem("board scontent", JSON.stringify(boardContent))
+
+
+    //     e.preventDefault(); // onSubmit 이벤트는 브라우저를 새로고치기 때문에 막아주기
+    //     if (!createTitle) return;
+    //     // 만약 input 창이 빈채로 submit을 하려고 할 땐 return시키기
+    //     props.onSubmit(createTitle);
+    //     setCreateTitle("");
+    //     // submit을 한 후에는 input 창을 비우기
+
+
+    //     console.log("~~~!! 성공요 ~~!!! 🏹")
+    // }
+
     const onSave = () => {
         const boardTitle = {name: createTitle};
         const boardContent = {name: createContent};
+
+        // setCreateTitle("");
+
         window.localStorage.setItem("board title", JSON.stringify(boardTitle))
-        window.localStorage.setItem("board scontent", JSON.stringify(boardContent))
-    }
+        window.localStorage.setItem("board content", JSON.stringify(boardContent))
+
+        console.log("~~~!! 성공요 ~~!!! 🏹")
+      };
 
     return (
         <TodoTemplateBlock>

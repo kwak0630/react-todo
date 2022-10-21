@@ -1,7 +1,6 @@
-import React,{useState} from 'react';
+import React from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from 'styled-components';
-import BoardEdit from './BoardEdit';
 
 const TodoTemplateBlock = styled.div`
     position: relative;
@@ -59,65 +58,27 @@ function BoardDetail ({onDelete}){
     // console.log(location)
 
     const navigate = useNavigate();
-
-    // 할 일 수정
-    const [selectedTodo, setSelectedTodo] = useState(null);
-    const [insertToggle, setInsertToggle] = useState(false);
-    const onInsertToggle = () => {
-        if (selectedTodo) {
-        setSelectedTodo(null);
-        }
-        setInsertToggle((prev) => !prev);
-    };
-    const onChangeSelectedTodo = (todo) => {
-        setSelectedTodo(todo);
-    };
-    const onUpdate = (id, text) => {
-      onInsertToggle();
-      
-      // console.log(id);
-      // console.log(text);
-      // setTodos(todos.map((todo) => (todo.id === id ? { ...todo, text } : todo)));
-  
-  
-    //   const newList = 
-    //     todos.map((todo) => 
-    //       (todo.id === id ? { ...todo, text } : todo)
-    //     );
-  
-    //     setTodos(newList);
-    //     localStorage.setItem('todos', JSON.stringify(newList));
-    };
-  
     
-
-
-    // const onDelete = (id) => {
-    //     // console.log("click") 
-    //     if (!window.confirm("삭제하시겠습니까?")) return false;
-    //     console.log(id);
-
-        
-    // }
-
     return (
         <TodoTemplateBlock>
             <BoardDetailBlock>
                 <div className="detail-wrap">
                     <h2>{title}</h2>
                     <div className="btn-box">
-
                         <button
-                            onClick={() =>
-                                {
-                                    onChangeSelectedTodo(item)
-                                    onInsertToggle();
-                                }
-                            }
                         >
                             <img className="btn-write" src={require('../assets/images/ico_write.png')} alt="write icon" />
                         </button>
-                        <button onClick={() => onDelete(id)}><img className="btn-delete" src={require('../assets/images/ico_delete.png')} alt="delete icon" /></button>
+                        <button 
+                            onClick={() => {
+                                if (window.confirm(`삭제하시겠습니까?`)) {
+                                    onDelete(id);
+                                }
+                              }}
+                        >
+                            <img className="btn-delete" src={require('../assets/images/ico_delete.png')} alt="delete icon" />
+                        </button>
+                        {/* <button onClick={() => onDelete(id)}><img className="btn-delete" src={require('../assets/images/ico_delete.png')} alt="delete icon" /></button> */}
 
                     </div>
                     <div className="content">
@@ -134,9 +95,6 @@ function BoardDetail ({onDelete}){
                 </div>
             </BoardDetailBlock>
 
-            {insertToggle && (
-                <BoardEdit onUpdate={onUpdate} selectedTodo={selectedTodo} />
-            )}
             <div className="fixed-bottom">
                 <button onClick={() => navigate(-1)}>뒤로가기</button>
             </div>

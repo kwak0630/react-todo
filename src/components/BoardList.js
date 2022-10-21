@@ -37,7 +37,6 @@ const BoardBlock = styled.div`
     }
 `;
 
-
 const CreateBtn = styled.div`
     position: absolute;
     bottom: 30px;
@@ -96,32 +95,32 @@ function Board(){
     },
     {
       id: 5,
-      title: 'test',
-      content: 'test 중'
+      title: 'test5',
+      content: 'test 중 test 중 test 중<br/>test 중 test 중 test 중 test 중 test 중 test 중 test 중 test 중 test 중 test 중 test 중 test 중 test 중'
     },
     {
       id: 6,
-      title: 'test',
+      title: 'test6',
       content: 'test 중'
     },
     {
       id: 7,
-      title: 'test',
+      title: 'test7',
       content: 'test 중'
     },
     {
       id: 8,
-      title: 'test',
+      title: 'test8',
       content: 'test 중'
     },
     {
       id: 9,
-      title: 'test',
+      title: 'test9',
       content: 'test 중'
     },
     {
       id: 10,
-      title: 'test',
+      title: 'test10',
       content: 'test 중'
     }
   ]);
@@ -139,23 +138,22 @@ function Board(){
 
   const navigate = useNavigate();
 
+  // 페이징
   const [limit] = useState(6);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
 
-  // 삭제
-  const onDelete = (id) => {
-    // setTodos(todos.filter((todo) => todo.id !== id));
 
-    // const deleteItem = boardItems.filter((boardItem) => boardItem.id !== id)
-    // setBoardItems(deleteItem);
+    // 삭제
+    const onDelete = (id) => {
+      const deleteItem = boardItems.filter((item) => item.id !== id)
 
-    // if (!window.confirm("삭제하시겠습니까?")) return
+      setBoardItems(deleteItem);
+      // console.log(deleteItem)
 
-    console.log("@@@")
-    
+      console.log("삭제 성공 🏹🏹")
+      // window.location.href = "./BoardList";
   };
-
   return (
     <TodoTemplateBlock>
         <BoardBlock>
@@ -164,15 +162,12 @@ function Board(){
               {boardItems.slice(offset, offset + limit).map((boardItem) =>
                   <BoardListItem 
                     boardItem={boardItem} 
-                    boardItems={boardItems} 
                     key={boardItem.id} 
                     onSelectedBoard={onSelectedBoard}
                     onDelete={onDelete}
                   />
-                  
               )}
               
-              {/* <button onClick={this.addList}>More</button> */}
               <BoardPagination 
                 total={boardItems.length}
                 limit={limit}
