@@ -52,7 +52,7 @@ const BoardDetailBlock = styled.div`
 
 `;
 
-function BoardDetail (){
+function BoardDetail ({onDelete}){
     const location = useLocation();
     const item = location.state.item;
     const {id, title, content} = item;
@@ -92,10 +92,13 @@ function BoardDetail (){
     
 
 
-    const onDelete = () => {
-        console.log("click") 
-        if (!window.confirm("삭제하시겠습니까?")) return false;
-    }
+    // const onDelete = (id) => {
+    //     // console.log("click") 
+    //     if (!window.confirm("삭제하시겠습니까?")) return false;
+    //     console.log(id);
+
+        
+    // }
 
     return (
         <TodoTemplateBlock>

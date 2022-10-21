@@ -52,7 +52,7 @@ function BoardCreate (){
             ...createTitle,
             [name]: value
         })
-        // console.log(createTitle)
+        console.log(createTitle)
     } 
     const onChangeContent = (e) => {
         const {name, value} = e.target;

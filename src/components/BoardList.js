@@ -144,15 +144,17 @@ function Board(){
   const offset = (page - 1) * limit;
 
   // 삭제
-  // const onDelete = (id) => {
-  //   // setTodos(todos.filter((todo) => todo.id !== id));
+  const onDelete = (id) => {
+    // setTodos(todos.filter((todo) => todo.id !== id));
 
-  //   const deleteItem = boardItems.filter((boardItem) => boardItem.id !== id)
-  //   setBoardItems(deleteItem);
+    // const deleteItem = boardItems.filter((boardItem) => boardItem.id !== id)
+    // setBoardItems(deleteItem);
 
-  //   if (!window.confirm("삭제하시겠습니까?")) return
+    // if (!window.confirm("삭제하시겠습니까?")) return
+
+    console.log("@@@")
     
-  // };
+  };
 
   return (
     <TodoTemplateBlock>
@@ -165,10 +167,11 @@ function Board(){
                     boardItems={boardItems} 
                     key={boardItem.id} 
                     onSelectedBoard={onSelectedBoard}
-                    // onDelete={onDelete}
+                    onDelete={onDelete}
                   />
                   
               )}
+              
               {/* <button onClick={this.addList}>More</button> */}
               <BoardPagination 
                 total={boardItems.length}
