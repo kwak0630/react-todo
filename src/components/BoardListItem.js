@@ -40,40 +40,30 @@ const BoardListItemBlock = styled.div`
 `;
 
 function BoardListItem({boardItems, boardItem}){
-    const {id, title, content} = boardItem;
+  const {id, title, content} = boardItem;
 
-    // console.log(boardItems)
+  // console.log(boardItems)
 
-    return (
-        <BoardListItemBlock>
-            {/* <Link to={{ pathname: './BoardDetail', state:{_id: id}}}>📔</Link> */}
-            <Link to={`../components/BoardDetail/${id}`} state={{item: boardItem, boardItems: boardItems}} >
-                <span>📔</span>
-                <span className="num">{id}</span>
-                <div className="cont">
-                    <strong>{title}</strong>
-                    {/* <p>{content}</p> */}
-                    {content.split("<br/>").map((line, index) => { //this.props.data.content: 내용
-                        return (
-                        <span key={index}>
-                            {line}
-                        </span>
-                        );
-                    })}
-                </div>
-            </Link>
-            {/* <button 
-                onClick={() => {
-                    //console.log(id)
-                    if (window.confirm(`삭제하시겠습니까?`)) {
-                        onDelete(id);
-                    }
-                    }}
-            >
-                <img className="btn-delete" src={require('../assets/images/ico_delete.png')} alt="delete icon" />
-            </button> */}
-        </BoardListItemBlock>
-    )
+  return (
+    <BoardListItemBlock>
+      {/* <Link to={{ pathname: './BoardDetail', state:{_id: id}}}>📔</Link> */}
+      <Link to={`../components/BoardDetail/${id}`} state={{item: boardItem, boardItems: boardItems}} >
+        <span>📔</span>
+        <span className="num">{id}</span>
+        <div className="cont">
+          <strong>{title}</strong>
+          {/* <p>{content}</p> */}
+          {content.split("<br/>").map((line, index) => { //this.props.data.content: 내용
+            return (
+            <span key={index}>
+              {line}
+            </span>
+            );
+          })}
+        </div>
+      </Link>
+    </BoardListItemBlock>
+  )
 }
 
 export default BoardListItem;

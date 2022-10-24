@@ -52,68 +52,66 @@ const BoardDetailBlock = styled.div`
 `;
 
 function BoardDetail (){
-    const location = useLocation();
-    const items = location.state.boardItems;
-    const item = location.state.item;
-    const {id, title, content} = item;
-    // console.log(location)
-    // console.log(items)
+  const navigate = useNavigate();
+  const location = useLocation();
+  const items = location.state.boardItems;
+  const item = location.state.item;
+  const {id, title, content} = item;
+  // console.log(location)
+  // console.log(items)
 
-    const navigate = useNavigate();
-    
-    const [setBoardItems] = useState("");
+  const [setBoardItems] = useState("");
 
-    // 삭제
-    const onDelete = (id) => {
-        const deleteItem = items.filter((item) => item.id !== id)
+  // 삭제
+  const onDelete = (id) => {
+    const deleteItem = items.filter((item) => item.id !== id)
 
-        console.log(deleteItem)
-        setBoardItems(deleteItem);
+    console.log(deleteItem)
+    setBoardItems(deleteItem);
 
-        console.log("삭제 성공 🏹🏹")
-        // window.location.href = "./BoardList";
-    };
-    return (
-        <TodoTemplateBlock>
-            <BoardDetailBlock>
-                <div className="detail-wrap">
-                    <h2>{title}</h2>
-                    <div className="btn-box">
-                        <button
-                        >
-                            <img className="btn-write" src={require('../assets/images/ico_write.png')} alt="write icon" />
-                        </button>
-                        <button 
-                            onClick={() => {
-                                if (window.confirm(`삭제하시겠습니까?`)) {
-                                    onDelete(id);
-                                }
-                              }}
-                        >
-                            <img className="btn-delete" src={require('../assets/images/ico_delete.png')} alt="delete icon" />
-                        </button>
-                        {/* <button onClick={() => onDelete(id)}><img className="btn-delete" src={require('../assets/images/ico_delete.png')} alt="delete icon" /></button> */}
+    console.log("삭제 성공 🏹🏹")
+    // window.location.href = "./BoardList";
+  };
+  return (
+    <TodoTemplateBlock>
+      <BoardDetailBlock>
+        <div className="detail-wrap">
+          <h2>{title}</h2>
+          <div className="btn-box">
+            <button
+            >
+              <img className="btn-write" src={require('../assets/images/ico_write.png')} alt="write icon" />
+            </button>
+            <button 
+              onClick={() => {
+                if (window.confirm(`삭제하시겠습니까?`)) {
+                  onDelete(id);
+                }
+                }}
+            >
+              <img className="btn-delete" src={require('../assets/images/ico_delete.png')} alt="delete icon" />
+            </button>
+            {/* <button onClick={() => onDelete(id)}><img className="btn-delete" src={require('../assets/images/ico_delete.png')} alt="delete icon" /></button> */}
+          </div>
+          <div className="content">
+            {/* {content} */}
+            {content.split("<br/>").map((line, index) => { //this.props.data.content: 내용
+              return (
+              <p key={index}>
+                {line}
+                <br />
+              </p>
+              );
+            })}
+          </div>
+        </div>
+      </BoardDetailBlock>
 
-                    </div>
-                    <div className="content">
-                        {/* {content} */}
-                        {content.split("<br/>").map((line, index) => { //this.props.data.content: 내용
-                            return (
-                            <p key={index}>
-                                {line}
-                                <br />
-                            </p>
-                            );
-                        })}
-                    </div>
-                </div>
-            </BoardDetailBlock>
-
-            <div className="fixed-bottom">
-                <button onClick={() => navigate(-1)}>뒤로가기</button>
-            </div>
-        </TodoTemplateBlock>
-    );
+      <div className="fixed-bottom">
+        <button onClick={() => navigate(-1)}>뒤로가기</button>
+      </div>
+    </TodoTemplateBlock>
+  );
 }
 
 export default BoardDetail;

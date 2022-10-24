@@ -91,17 +91,6 @@ function Board() {
     setBoardItems(boardItems);
   }, [ boardItems])
 
-  // // 삭제
-  // const onDelete = (id) => {
-  //   const deleteItem = boardItems.filter((item) => item.id !== id)
-
-  //   setBoardItems(deleteItem);
-  //   // console.log(deleteItem)
-
-  //   console.log("삭제 성공 🏹🏹")
-  //   // window.location.href = "./BoardList";
-  // };
-
   return (
     <div>
       <TodoTemplateBlock>
@@ -113,9 +102,8 @@ function Board() {
               </div>
           </div>
           <BoardList 
-            boardItems={boardItems} 
-            // onDelete={onDelete}
-          /> 
+            boardItems={boardItems}
+          />
         </BoardBlock>
       </TodoTemplateBlock>
     </div>

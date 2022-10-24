@@ -68,7 +68,6 @@ function BoardList({boardItems}){
                   boardItems={boardItems} 
                   key={boardItem.id} 
                   onSelectedBoard={onSelectedBoard}
-                  // onDelete={onDelete}
                 />
             )}
             
