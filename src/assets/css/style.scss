@@ -154,3 +154,21 @@ body {
 	font-size: 16px;
 	font-weight: 600;
 }
+
+.title-wrap{
+	position: relative;
+	.side{
+		position: absolute;
+		top: 4px;
+		right: 20px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		em{
+			padding: 0 5px;
+			font-size: 18px;
+			font-weight: 700;
+			color: #ff9800;
+		}
+	}
+}

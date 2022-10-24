@@ -40,30 +40,45 @@ const BoardCreateBlock = styled.div`
 
 `;
 
-function BoardCreate (props){
+function BoardCreate (){
     const navigate = useNavigate();
 
-    const [createTitle, setCreateTitle] = useState ();
-    const [createContent, setCreateContent] = useState ();
-    const onChangeTitle = (e) => {
-        const {name, value} = e.target;
+    // const [createTitle, setCreateTitle] = useState ();
+    // const [createContent, setCreateContent] = useState ();
+    // const onChangeTitle = (e) => {
+    //     const {name, value} = e.target;
 
-        setCreateTitle({
-            ...createTitle,
-            [name]: value
-        })
-        console.log(createTitle)
-    } 
-    const onChangeContent = (e) => {
-        const {name, value} = e.target;
+    //     setCreateTitle({
+    //         ...createTitle,
+    //         [name]: value
+    //     })
+    //     console.log(createTitle)
+    // } 
+    // const onChangeContent = (e) => {
+    //     const {name, value} = e.target;
 
-        setCreateContent({
-            ...createContent,
-            [name]: value
-        })
-        // console.log(createContent)
-    }
+    //     setCreateContent({
+    //         ...createContent,
+    //         [name]: value
+    //     })
+    //     // console.log(createContent)
+    // }
 
+    const [state, setState] = useState({
+        createTitle: "",
+        createContent: "",
+    });
+    const handleChangeState = (e) => {
+        setState({
+            ...state,
+            [e.target.name]: e.target.value,
+        });
+    };
+    const handleSubmit = () => {
+        console.log(state);
+        alert("저장 성공!");
+    };
+      
     // const onSave = (e) => {
     //     // const boardTitle = {name: createTitle};
     //     // const boardContent = {name: createContent};
@@ -82,42 +97,44 @@ function BoardCreate (props){
     //     console.log("~~~!! 성공요 ~~!!! 🏹")
     // }
 
-    const onSave = () => {
-        const boardTitle = {name: createTitle};
-        const boardContent = {name: createContent};
+    // const onSave = () => {
+    //     const boardTitle = {name: createTitle};
+    //     const boardContent = {name: createContent};
 
-        // setCreateTitle("");
+    //     // setCreateTitle("");
 
-        window.localStorage.setItem("board title", JSON.stringify(boardTitle))
-        window.localStorage.setItem("board content", JSON.stringify(boardContent))
+    //     window.localStorage.setItem("board title", JSON.stringify(boardTitle))
+    //     window.localStorage.setItem("board content", JSON.stringify(boardContent))
 
-        console.log("~~~!! 성공요 ~~!!! 🏹")
-      };
+    //     console.log("~~~!! 성공요 ~~!!! 🏹")
+    // };
 
     return (
         <TodoTemplateBlock>
             <BoardCreateBlock>
                 <div className="detail-wrap">
-            <h2>📔 Board</h2>
+                <h2>📔 Board</h2>
                     <div className="content">
                         <form className='form-wrap'>
                             <div className='form-item'>
                                 <input 
                                     type="text" 
                                     placeholder='Subject'
-                                    name="title"
-                                    onChange={onChangeTitle}
+                                    name="createTitle"
+                                    value={state.createTitle}
+                                    onChange={handleChangeState}
                                 />
                             </div>
                             <div className='form-item'>
                                 <textarea 
                                     placeholder='Content'
-                                    name="content"
-                                    onChange={onChangeContent}
+                                    name="createContent"
+                                    value={state.createContent}
+                                    onChange={handleChangeState}
                                 ></textarea>
                             </div>
                             <div className='btn-wrap'>
-                                <button className='btn-type' onClick={onSave}>
+                                <button className='btn-type' onClick={handleSubmit}>
                                     Save
                                 </button>
                             </div>

@@ -39,13 +39,15 @@ const BoardListItemBlock = styled.div`
     }
 `;
 
-function BoardList({boardItem, onDelete}){
+function BoardListItem({boardItem, onDelete}){
     const {id, title, content} = boardItem;
+
+    // console.log(onDelete)
 
     return (
         <BoardListItemBlock>
             {/* <Link to={{ pathname: './BoardDetail', state:{_id: id}}}>📔</Link> */}
-            <Link to={`../components/BoardDetail/${id}`} state={{item: boardItem}}>
+            <Link to={`../components/BoardDetail/${id}`} state={{item: boardItem}} >
                 <span>📔</span>
                 <span className="num">{id}</span>
                 <div className="cont">
@@ -74,4 +76,4 @@ function BoardList({boardItem, onDelete}){
     )
 }
 
-export default BoardList;
+export default BoardListItem;
