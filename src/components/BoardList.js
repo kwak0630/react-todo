@@ -43,7 +43,7 @@ const CreateBtn = styled.div`
     }
 `;
 
-function BoardList({boardItems, onDelete}){
+function BoardList({boardItems}){
 
   const [setSelectedBoard] = useState(null);
   
@@ -68,7 +68,7 @@ function BoardList({boardItems, onDelete}){
                   boardItems={boardItems} 
                   key={boardItem.id} 
                   onSelectedBoard={onSelectedBoard}
-                  onDelete={onDelete}
+                  // onDelete={onDelete}
                 />
             )}
             

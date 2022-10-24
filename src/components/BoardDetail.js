@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 
@@ -51,14 +51,28 @@ const BoardDetailBlock = styled.div`
 
 `;
 
-function BoardDetail ({onDelete}){
+function BoardDetail (){
     const location = useLocation();
+    const items = location.state.boardItems;
     const item = location.state.item;
     const {id, title, content} = item;
     // console.log(location)
+    // console.log(items)
 
     const navigate = useNavigate();
     
+    const [setBoardItems] = useState("");
+
+    // 삭제
+    const onDelete = (id) => {
+        const deleteItem = items.filter((item) => item.id !== id)
+
+        console.log(deleteItem)
+        setBoardItems(deleteItem);
+
+        console.log("삭제 성공 🏹🏹")
+        // window.location.href = "./BoardList";
+    };
     return (
         <TodoTemplateBlock>
             <BoardDetailBlock>

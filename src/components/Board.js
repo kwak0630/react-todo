@@ -91,16 +91,16 @@ function Board() {
     setBoardItems(boardItems);
   }, [ boardItems])
 
-  // 삭제
-  const onDelete = (id) => {
-    const deleteItem = boardItems.filter((item) => item.id !== id)
+  // // 삭제
+  // const onDelete = (id) => {
+  //   const deleteItem = boardItems.filter((item) => item.id !== id)
 
-    setBoardItems(deleteItem);
-    // console.log(deleteItem)
+  //   setBoardItems(deleteItem);
+  //   // console.log(deleteItem)
 
-    console.log("삭제 성공 🏹🏹")
-    // window.location.href = "./BoardList";
-  };
+  //   console.log("삭제 성공 🏹🏹")
+  //   // window.location.href = "./BoardList";
+  // };
 
   return (
     <div>
@@ -114,7 +114,7 @@ function Board() {
           </div>
           <BoardList 
             boardItems={boardItems} 
-            onDelete={onDelete}
+            // onDelete={onDelete}
           /> 
         </BoardBlock>
       </TodoTemplateBlock>

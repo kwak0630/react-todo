@@ -39,15 +39,15 @@ const BoardListItemBlock = styled.div`
     }
 `;
 
-function BoardListItem({boardItem, onDelete}){
+function BoardListItem({boardItems, boardItem}){
     const {id, title, content} = boardItem;
 
-    // console.log(onDelete)
+    // console.log(boardItems)
 
     return (
         <BoardListItemBlock>
             {/* <Link to={{ pathname: './BoardDetail', state:{_id: id}}}>📔</Link> */}
-            <Link to={`../components/BoardDetail/${id}`} state={{item: boardItem}} >
+            <Link to={`../components/BoardDetail/${id}`} state={{item: boardItem, boardItems: boardItems}} >
                 <span>📔</span>
                 <span className="num">{id}</span>
                 <div className="cont">
@@ -62,7 +62,7 @@ function BoardListItem({boardItem, onDelete}){
                     })}
                 </div>
             </Link>
-            <button 
+            {/* <button 
                 onClick={() => {
                     //console.log(id)
                     if (window.confirm(`삭제하시겠습니까?`)) {
@@ -71,7 +71,7 @@ function BoardListItem({boardItem, onDelete}){
                     }}
             >
                 <img className="btn-delete" src={require('../assets/images/ico_delete.png')} alt="delete icon" />
-            </button>
+            </button> */}
         </BoardListItemBlock>
     )
 }
