@@ -104,6 +104,7 @@ function Board() {
           <BoardList 
             boardItems={boardItems}
           />
+          
         </BoardBlock>
       </TodoTemplateBlock>
     </div>

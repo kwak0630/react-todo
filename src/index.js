@@ -4,11 +4,13 @@ import './index.css';
 import App from './App';
 import Board from './components/Board';
 import BoardDetail from './components/BoardDetail';
+import Users from './components/Users';
+// import UsersDetail from './components/UsersDetail';
 // import BoardEdit from './components/BoardEdit';
 // import BoardCreate from './components/BoardCreate';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,6 +22,9 @@ root.render(
         <Route path="components/BoardDetail/:id" element={<BoardDetail />}  />
         {/* <Route path="components/BoardEdit/:id" element={<BoardEdit />} /> */}
         {/* <Route path="components/BoardCreate" element={<BoardCreate />} /> */}
+        <Route path="components/Users/*" element={<Users />}>
+          {/* <Route path=":id" element={<UsersDetail />} /> */}
+        </Route>
       </Routes>
     </BrowserRouter>
     {/* <App /> */}
