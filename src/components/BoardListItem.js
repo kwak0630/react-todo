@@ -41,7 +41,6 @@ const BoardListItemBlock = styled.div`
 
 function BoardListItem({boardItems, boardItem}){
   const {id, title, content} = boardItem;
-
   // console.log(boardItems)
 
   return (

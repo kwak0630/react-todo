@@ -71,6 +71,7 @@ function BoardList({boardItems}){
                 />
             )}
             
+            {/* 페이징 */}
             <BoardPagination 
               total={boardItems.length}
               limit={limit}

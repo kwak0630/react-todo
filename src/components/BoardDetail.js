@@ -59,6 +59,7 @@ function BoardDetail (){
   const {id, title, content} = item;
   // console.log(location)
   // console.log(items)
+  console.log(id)
 
   const [setBoardItems] = useState("");
 
@@ -67,10 +68,10 @@ function BoardDetail (){
     const deleteItem = items.filter((item) => item.id !== id)
 
     console.log(deleteItem)
-    setBoardItems(deleteItem);
 
-    console.log("삭제 성공 🏹🏹")
-    // window.location.href = "./BoardList";
+    // console.log("삭제 성공 🏹🏹")
+    // window.location.href = "../Board";
+    setBoardItems(deleteItem);
   };
   return (
     <TodoTemplateBlock>
